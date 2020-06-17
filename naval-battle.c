@@ -158,7 +158,7 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
                 }
             }
 
-            else if (mapaUsuario[x][y] == 0  &&  disparosMapaUsuario[x][y] == 1)
+            else if (mapaUsuario[x][y] != 1  &&  disparosMapaUsuario[x][y] == 1)
             {
                 system("cls");
                 imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
@@ -166,12 +166,6 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
                 printf("\nSe detecto una explosion en %c%d", x+65, y+1);
                 getche();
             }
-            else
-            {
-                printf("\nEl torpedo enemigo estaba dañado!");
-                printf("\nNo se detectó ninguna explosión");
-            }
-
         }
 
         else //Turno del usuario
