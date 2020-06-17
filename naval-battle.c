@@ -242,10 +242,6 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
                 system("cls");
                 printf("\n No le diste a ningun barco!\n");
             }
-            else
-            {
-                printf("\n Se produjo un error. Se proceso X: %d Y: %d", x, y);
-            }
         }
         turno++;
     }
