@@ -73,14 +73,14 @@ void bienvenida (char nombreUsuario[])
         nombreUsuario[i] = '\0';
     }
     system("cls");
-    printf("\nMuy bien, capitan %s, es un honor tenerlo a bordo.", nombreUsuario);
-    printf("\nSu objetivo es hundir todos los barcos del enemigo, antes de que ellos lo hagan, mucha");
+    printf("\n Muy bien, capitan %s, es un honor tenerlo a bordo.", nombreUsuario);
+    printf("\n Su objetivo es hundir todos los barcos del enemigo, antes de que ellos lo hagan, mucha");
     printf(" suerte!");
 
-    printf("\n\nEn esta ocasion dispones de %d barcos, y su enemigo tambien. ", CANTIDADBARCOS);
-    printf("\nDistribuyelos estrategicamente para hacerte con la victoria.");
+    printf("\n\n En esta ocasion dispones de %d barcos, y su enemigo tambien. ", CANTIDADBARCOS);
+    printf("\n Distribuyelos estrategicamente para hacerte con la victoria.");
 
-    printf("\n\nPresiona una tecla para continuar");
+    printf("\n\n Presiona una tecla para continuar");
     getche();
     system("cls");
 }
@@ -108,7 +108,7 @@ void generarBarcosUsuario(int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY,
         {
             system("cls");
             imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
-            printf("\n\nEn que columna colocaras el el barco numero %d? (A - %c): ", i + 1, equivaleX);
+            printf("\n\n En que columna colocaras el el barco numero %d? (A - %c): ", i + 1, equivaleX);
             ingreso = getche();
             x = conversionLetraANumero(ingreso);
         }
@@ -120,7 +120,7 @@ void generarBarcosUsuario(int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY,
             /*No se guarda realmente la columna introducida por el usuario, si no que se guarda el valor -1,
            ...de esta manera es más intuitivo para el usuario, ya que nunca tendrá que utilizar la columna
            ...0. En todo caso introducirá la columna 1, pero realmente se colocará en la columna 0*/
-            printf("\nY en que fila? (1 - %d): ", TAMANOY);
+            printf("\n Y en que fila? (1 - %d): ", TAMANOY);
             scanf("%d", &aux);
             aux -= 1;
             y = aux;
@@ -158,7 +158,7 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
         if (turno % 2 == 0) // Turno de la máquina
         {
             imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
-            printf("\n\nHector Bonzo da la orden de disparar y...");
+            printf("\n\n Hector Bonzo da la orden de disparar y...");
             do
             {
                 x = (rand() % TAMANOX);
@@ -172,7 +172,7 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
             {
                 system("cls");
                 imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
-                printf("\n\nUn barco aliado fue hundido!");
+                printf("\n\n Un barco aliado fue hundido!");
                 aciertosEnemigo++;
                 getche();
 
@@ -186,8 +186,8 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
             {
                 system("cls");
                 imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
-                printf("\n\nHector Bonzo fallo!.");
-                printf("\nSe detecto una explosion en %c%d", x+65, y+1);
+                printf("\n\n Hector Bonzo fallo!.");
+                printf("\n Se detecto una explosion en %c%d", x+65, y+1);
                 getche();
             }
         }
@@ -202,10 +202,10 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
             {
                 if (disparosMapaEnemigo[x][y] == 1)
                 {
-                    printf("\nTu primer oficial te informa que dicha coordenada ya fue atacada previamente");
-                    printf("\nRapido, vuelve a informarle a tu primer oficial en donde atacar");
+                    printf("\n Tu primer oficial te informa que dicha coordenada ya fue atacada previamente");
+                    printf("\n Rapido, vuelve a informarle a tu primer oficial en donde atacar");
                 }
-                printf("\n\nEn que columna quieres atacar? (A - %c): ", equivaleX);
+                printf("\n\n En que columna quieres atacar? (A - %c): ", equivaleX);
                 ingreso = getche();
                 x = conversionLetraANumero(ingreso);
                 }
@@ -213,7 +213,7 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
 
                 do
                 {
-                    printf("\nY en que fila?: ");
+                    printf("\n Y en que fila?: ");
                     scanf("%d", &aux);
                     y = aux - 1;
                 }
@@ -222,25 +222,29 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
             while (disparosMapaEnemigo[x][y] == 1); // Comprueba que ya no se haya disparado en dicha coordenada.
             disparosMapaEnemigo[x][y] = 1;
 
-            printf("\nSe prepara el disparo y...");
+            printf("\n Se prepara el disparo y...");
             getche();
             if (mapaEnemigo[x][y] == 1  &&  disparosMapaEnemigo[x][y] == 1)
             {
                 system("cls");
                 aciertosUsuario++;
                 imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
-                printf("\n\nUn barco enemigo fue hundido!");
+                printf("\n\n Un barco enemigo fue hundido!");
                 if (comprobarFinalizacionJuego(aciertosUsuario)) //Verifica si el juego debe finalizar.
                 {
                     imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
-                    printf("\nFelicitaciones, ganaste!");
+                    printf("\n Felicitaciones, ganaste!");
                 }
             }
             else if (mapaEnemigo[x][y] == 0  &&  disparosMapaEnemigo[x][y] == 1)
             {
                 imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
                 system("cls");
-                printf("\nNo le diste a ningun barco!\n");
+                printf("\n No le diste a ningun barco!\n");
+            }
+            else
+            {
+                printf("\n Se produjo un error. Se proceso X: %d Y: %d", x, y);
             }
         }
         turno++;
