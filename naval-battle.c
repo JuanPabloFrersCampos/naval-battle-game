@@ -11,15 +11,16 @@
 #define COLOR_DEFAULT "\x1b[0m"
 #define ROJO_T "\x1b[31m"
 #define VERDE_T "\x1b[32m"
-char equivaleX = 'F';
+char equivaleX = 'F'; //En caso de modificar el tamaño X del mapa, colocar el equivalente al tamaño aquí.
 
+void bienvenida (char[]);
+void prepararMapa(int [] [TAMANOY], int [] [TAMANOY], int [] [TAMANOY], int [] [TAMANOY]);
 void generarBarcosEnemigos(int [] [TAMANOY]);
 void generarBarcosUsuario(int [] [TAMANOY], int [] [TAMANOY], int [] [TAMANOY], int [] [TAMANOY]);
 void imprimirMapa (int [] [TAMANOY], int [] [TAMANOY], int [] [TAMANOY], int [] [TAMANOY]);
 void disparos(int [] [TAMANOY], int [] [TAMANOY], int [] [TAMANOY], int [] [TAMANOY]);
 int comprobarFinalizacionJuego (int);
 int conversionLetraANumero(char);
-void bienvenida (char[]);
 
 int main()
 {
@@ -29,12 +30,31 @@ int main()
     char nombreUsuario [NOMBREMAX];
 
     //Ejecución del programa ordenadamente:
+    prepararMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
     bienvenida(nombreUsuario);
     generarBarcosEnemigos(mapaEnemigo);
     generarBarcosUsuario(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
     imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
     disparos(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
     return 0;
+}
+
+void prepararMapa (int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY, int disparosMapaEnemigo TAMANOXY,
+                   int disparosMapaUsuario TAMANOXY)
+{
+    /*Setea todos los índices de los arreglos, según el tamaño del mapa, con valor 0. Posteriormente,
+    estos valores pueden ser modificados, en caso de que contengan un barco, o sean disparados*/
+    int x, y;
+    for (y = 0; y <= TAMANOY - 1; y++)
+    {
+        for (x = 0; x <= TAMANOX - 1; x++)
+        {
+            mapaEnemigo[x][y] = 0;
+            mapaUsuario[x][y] = 0;
+            disparosMapaEnemigo[x][y] = 0;
+            disparosMapaUsuario[x][y] = 0;
+        }
+    }
 }
 
 void bienvenida (char nombreUsuario[])
@@ -158,7 +178,7 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
                 }
             }
 
-            else if (mapaUsuario[x][y] != 1  &&  disparosMapaUsuario[x][y] == 1)
+            else if (mapaUsuario[x][y] == 0  &&  disparosMapaUsuario[x][y] == 1)
             {
                 system("cls");
                 imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
@@ -203,7 +223,7 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
                     printf("\nFelicitaciones, ganaste!");
                 }
             }
-            else if (mapaEnemigo[x][y] != 1  &&  disparosMapaEnemigo[x][y] == 1)
+            else if (mapaEnemigo[x][y] == 0  &&  disparosMapaEnemigo[x][y] == 1)
             {
                 imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
                 system("cls");
@@ -319,7 +339,7 @@ void imprimirMapa (int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY, int dispa
             {
                 printf(ROJO_T"\t=>"COLOR_DEFAULT);
             }
-            else if (mapaEnemigo [x][y] != 1  &&  disparosMapaEnemigo [x][y] == 1)
+            else if (mapaEnemigo [x][y] == 0  &&  disparosMapaEnemigo [x][y] == 1)
             {
                 printf("\tX");
             }
@@ -348,11 +368,11 @@ void imprimirMapa (int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY, int dispa
             {
                 printf(ROJO_T"\t=>"COLOR_DEFAULT);
             }
-            else if (mapaUsuario [x][y] != 1  &&  disparosMapaUsuario [x][y] == 1)
+            else if (mapaUsuario [x][y] == 0  &&  disparosMapaUsuario [x][y] == 1)
             {
                 printf("\tX");
             }
-            else if (mapaUsuario [x][y] == 1  &&  disparosMapaUsuario [x][y] != 1)
+            else if (mapaUsuario [x][y] == 1  &&  disparosMapaUsuario [x][y] == 0)
             {
                 printf(VERDE_T"\t=>"COLOR_DEFAULT);
             }
