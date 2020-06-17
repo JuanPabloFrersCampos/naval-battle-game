@@ -198,19 +198,28 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
             {
             system("cls");
             imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
-            printf("\n\nEn que columna quieres atacar? (A - %c): ", equivaleX);
-            ingreso = getche();
-            x = conversionLetraANumero(ingreso);
-            }
-            while (x ==  999); //999 es devuelto por conversionLetraANumero, si se le pasa un valor no previsto
-
             do
             {
-                printf("\nY en que fila?: ");
-                scanf("%d", &aux);
-                y = aux - 1;
+                if (disparosMapaEnemigo[x][y] == 1)
+                {
+                    printf("\nTu primer oficial te informa que dicha coordenada ya fue atacada previamente");
+                    printf("\nRapido, vuelve a informarle a tu primer oficial en donde atacar");
+                }
+                printf("\n\nEn que columna quieres atacar? (A - %c): ", equivaleX);
+                ingreso = getche();
+                x = conversionLetraANumero(ingreso);
+                }
+                while (x ==  999); //999 es devuelto por conversionLetraANumero, si se le pasa un valor no previsto
+
+                do
+                {
+                    printf("\nY en que fila?: ");
+                    scanf("%d", &aux);
+                    y = aux - 1;
+                }
+                while (y < 0  ||  y > TAMANOY );
             }
-            while (y < 0  ||  y > TAMANOY );
+            while (disparosMapaEnemigo[x][y] == 1); // Comprueba que ya no se haya disparado en dicha coordenada.
             disparosMapaEnemigo[x][y] = 1;
 
             printf("\nSe prepara el disparo y...");
