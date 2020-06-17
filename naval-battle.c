@@ -4,7 +4,7 @@
 #include <conio.h>
 
 #define CANTIDADBARCOS 3
-#define TAMANOX 6 //Se puede modificar sin problema hasta el 15. DespuÈs de eso conversionALetra fallar·
+#define TAMANOX 6 //Se puede modificar sin problema hasta el 15. Despu√©s de eso conversionALetra fallar√°
 #define TAMANOY 3
 #define NOMBREMAX 32
 #define TAMANOXY [TAMANOX] [TAMANOY]
@@ -28,7 +28,7 @@ int main()
     int disparosMapaUsuario TAMANOXY;
     char nombreUsuario [NOMBREMAX];
 
-    //EjecuciÛn del programa ordenadamente:
+    //Ejecuci√≥n del programa ordenadamente:
     bienvenida(nombreUsuario);
     generarBarcosEnemigos(mapaEnemigo);
     generarBarcosUsuario(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
@@ -92,14 +92,14 @@ void generarBarcosUsuario(int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY,
             ingreso = getche();
             x = conversionLetraANumero(ingreso);
         }
-        while (x == 999); /*Este valor lo retorna la funciÛn conversionLetraANumero,
+        while (x == 999); /*Este valor lo retorna la funci√≥n conversionLetraANumero,
                                  ... al analizar un caracter no previsto.*/
 
         do
         {
             /*No se guarda realmente la columna introducida por el usuario, si no que se guarda el valor -1,
-           ...de esta manera es m·s intuitivo para el usuario, ya que nunca tendr· que utilizar la columna
-           ...0. En todo caso introducir· la columna 1, pero realmente se colocar· en la columna 0*/
+           ...de esta manera es m√°s intuitivo para el usuario, ya que nunca tendr√° que utilizar la columna
+           ...0. En todo caso introducir√° la columna 1, pero realmente se colocar√° en la columna 0*/
             printf("\nY en que fila? (1 - %d): ", TAMANOY);
             scanf("%d", &aux);
             aux -= 1;
@@ -126,16 +126,16 @@ int comprobarFinalizacionJuego(int aciertos)
 
 void disparos (int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY, int disparosMapaEnemigo TAMANOXY,
                int disparosMapaUsuario TAMANOXY)
-/*Genera (en el caso de la m·quina)/solicita (para el usuario) las coordenadas en donde se efectua un disparo
-, y verifica si se acierta a alg˙n barco. En el caso de acertar, actualiza el mapa, suma un acierto, y
-mediante la funciÛn comprobarFinalizacionJuego, despliega o no un mensaje de finalizaciÛn del juego.*/
+/*Genera (en el caso de la m√°quina)/solicita (para el usuario) las coordenadas en donde se efectua un disparo
+, y verifica si se acierta a alg√∫n barco. En el caso de acertar, actualiza el mapa, suma un acierto, y
+mediante la funci√≥n comprobarFinalizacionJuego, despliega o no un mensaje de finalizaci√≥n del juego.*/
 {
     int aciertosEnemigo=0, aciertosUsuario=0, turno=1, ingreso, x, y, aux;
     srand(time(NULL));
 
     while (aciertosEnemigo < CANTIDADBARCOS  &&  aciertosUsuario  <  CANTIDADBARCOS)
     {
-        if (turno % 2 == 0) // Turno de la m·quina
+        if (turno % 2 == 0) // Turno de la m√°quina
         {
             imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
             printf("\n\nHector Bonzo da la orden de disparar y...");
@@ -168,8 +168,8 @@ mediante la funciÛn comprobarFinalizacionJuego, despliega o no un mensaje de fin
             }
             else
             {
-                printf("\nInteraccion no prevista");
-                getche();
+                printf("\nEl torpedo enemigo estaba da√±ado!");
+                printf("\nNo se detect√≥ ninguna explosi√≥n");
             }
 
         }
@@ -225,10 +225,10 @@ mediante la funciÛn comprobarFinalizacionJuego, despliega o no un mensaje de fin
 }
 
 int conversionLetraANumero(char c)
-/*Convierte las letras a la posiciÛn numÈrica equivalente. Si analiza un caracter
+/*Convierte las letras a la posici√≥n num√©rica equivalente. Si analiza un caracter
 no previsto, devuelve 999.
-Las pruebas lÛgicas planteadas, se basan en el cÛdigo ASCII. Se suma 32 en todas,
-ya que es la misma letra pero en may˙scula.*/
+Las pruebas l√≥gicas planteadas, se basan en el c√≥digo ASCII. Se suma 32 en todas,
+ya que es la misma letra pero en may√∫scula.*/
 {
     int devuelve;
     if (c == 65  ||  c == 65 + 32)
@@ -306,17 +306,17 @@ ya que es la misma letra pero en may˙scula.*/
 
 void imprimirMapa (int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY, int disparosMapaEnemigo TAMANOXY,
                    int disparosMapaUsuario TAMANOXY)
-//Imprime tanto mapa enemigo como aliado, se debe actualizar despuÈs de cada turno.
+//Imprime tanto mapa enemigo como aliado, se debe actualizar despu√©s de cada turno.
 {
     int x, y;
-    //ImpresiÛn mapa enemigo:
+    //Impresi√≥n mapa enemigo:
     printf("\n\t\t\t\tCuadricula enemiga:\n\n\t\t");
-    for (x = 65; x <= 65 + TAMANOX - 1; x++) // Fila que muestra letras seg˙n corresponda sobre los numeros
+    for (x = 65; x <= 65 + TAMANOX - 1; x++) // Fila que muestra letras seg√∫n corresponda sobre los numeros
     {
         printf("\t%c", x);
     }
     printf("\n");
-    for (y = 0; y <= TAMANOY - 1; y++)  // Columna a la izquierda de los n˙meros, que indica la posiciÛn
+    for (y = 0; y <= TAMANOY - 1; y++)  // Columna a la izquierda de los n√∫meros, que indica la posici√≥n
     {                                   // al usuario
         printf("\n\n\t\t%d", y+1);
         for (x = 0; x <= TAMANOX - 1; x++)
@@ -338,7 +338,7 @@ void imprimirMapa (int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY, int dispa
 
     printf("\n\n\t\t\t-----------------------------------------\n\n");
 
-    //ImpresiÛn mapa del usuario:
+    //Impresi√≥n mapa del usuario:
     printf("\t\t\t\tCuadricula aliada:\n\n\t\t");
     for (x = 65; x <= 65 + TAMANOX - 1; x++)
     {
