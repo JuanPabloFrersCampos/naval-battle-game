@@ -1,4 +1,4 @@
-# naval-battle
+# naval-battle-game
 Basic naval battle shifts game, developed in C / Juego básico de batalla naval por turnos.
 
 Note that the author has only a pair of months programming experience, and still the code is really clean. The game works properly, and is really flexible in order to allow changes, but still under development. All the available documentation is in Spanish, but may be translated if requested.
