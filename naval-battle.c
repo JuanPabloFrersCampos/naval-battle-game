@@ -180,7 +180,7 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
             {
             system("cls");
             imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
-            printf("\n\nEn que fila quieres atacar? (A - %c): ", equivaleX);
+            printf("\n\nEn que columna quieres atacar? (A - %c): ", equivaleX);
             ingreso = getche();
             x = conversionLetraANumero(ingreso);
             }
@@ -188,7 +188,7 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
 
             do
             {
-                printf("\nY en que columna?: ");
+                printf("\nY en que fila?: ");
                 scanf("%d", &aux);
                 y = aux - 1;
             }
@@ -199,13 +199,13 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
             getche();
             if (mapaEnemigo[x][y] == 1  &&  disparosMapaEnemigo[x][y] == 1)
             {
-                aciertosUsuario++;
                 system("cls");
+                aciertosUsuario++;
                 imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
                 printf("\n\nUn barco enemigo fue hundido!");
                 if (comprobarFinalizacionJuego(aciertosUsuario)) //Verifica si el juego debe finalizar.
                 {
-                    system("cls");
+                    imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
                     printf("\nFelicitaciones, ganaste!");
                 }
             }
