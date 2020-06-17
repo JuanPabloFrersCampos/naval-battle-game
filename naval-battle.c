@@ -159,9 +159,13 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
         {
             imprimirMapa(mapaEnemigo, mapaUsuario, disparosMapaEnemigo, disparosMapaUsuario);
             printf("\n\nHector Bonzo da la orden de disparar y...");
-            x = (rand() % TAMANOX);
-            y = (rand() % TAMANOY);
-            disparosMapaUsuario [x][y] = 1;
+            do
+            {
+                x = (rand() % TAMANOX);
+                y = (rand() % TAMANOY);
+            }
+            while (disparosMapaUsuario[x][y] == 1); //En caso de que genere unas coordenadas en donde
+            disparosMapaUsuario [x][y] = 1;         //previamente se disparó, genera otras diferentes.
             getche();
 
             if (mapaUsuario[x][y] == 1  &&  disparosMapaUsuario[x][y] == 1) //Si aciertan a un barco
@@ -382,5 +386,5 @@ void imprimirMapa (int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY, int dispa
             }
         }
     }
-    printf("\n ");
+    printf("\n");
 }
