@@ -382,5 +382,5 @@ void imprimirMapa (int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY, int dispa
             }
         }
     }
-    printf("\n");
+    printf("\n ");
 }
