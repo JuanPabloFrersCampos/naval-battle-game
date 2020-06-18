@@ -3,7 +3,7 @@ Basic naval battle shifts game, developed in C / Juego básico de batalla naval 
 
 Note that the author has only a pair of months programming experience, and still the code is really clean. The game works properly, and is really flexible in order to allow user personalization, even with the game under development. All the available documentation is in Spanish, but may be translated if requested.
 
-This game took me about 5 hours to be donde (from the concept, to the version 1.0)
+This game took me about 5 hours to be done (from the concept, to the version 1.0)
 
 Author contact:
 juanpfrers@gmail.com
