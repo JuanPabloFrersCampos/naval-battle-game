@@ -4,7 +4,7 @@
 #include <conio.h>
 
 #define CANTIDADBARCOS 3
-#define TAMANOX 6 //Se puede modificar sin problema hasta el 15. Después de eso conversionALetra fallará
+#define TAMANOX 6
 #define TAMANOY 3
 #define NOMBREMAX 32
 #define TAMANOXY [TAMANOX] [TAMANOY]
@@ -248,79 +248,28 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
 }
 
 int conversionLetraANumero(char c)
-/*Convierte las letras a la posición numérica equivalente. Si analiza un caracter
+/*Convierte una letra a su posición numérica equivalente. Si analiza un caracter
 no previsto, devuelve 999.
-Las pruebas lógicas planteadas, se basan en el código ASCII. Se suma 32 en todas,
-ya que es la misma letra pero en mayúscula.*/
+
+Las pruebas lógicas planteadas, se basan en el código ASCII. Se  incluye una prueba lógica OR + 32 en
+todas las instancias, ya que el equivalente de la letra en minúscula.
+65 es el identificador correspondiente a la letra "a". i aumenta en 1 cada vez que se realiza el ciclo,
+para así recorrer todo el abecedario.*/
 {
-    int devuelve;
-    if (c == 65  ||  c == 65 + 32)
+    int devuelve, i = 0;
+
+    while (i <= 26)
     {
-        devuelve = 0;
-    }
-    else if (c == 66  ||  c == 66 + 32)
-    {
-        devuelve = 1;
-    }
-    else if (c == 67  ||  c == 67 + 32)
-    {
-        devuelve = 2;
-    }
-    else if (c == 68  ||  c == 68 + 32)
-    {
-        devuelve = 3;
-    }
-    else if (c == 69  ||  c == 69 + 32)
-    {
-        devuelve = 4;
-    }
-    else if (c == 70  ||  c == 70 + 32)
-    {
-        devuelve = 5;
-    }
-    else if (c == 71  ||  c == 71 + 32)
-    {
-        devuelve = 6;
-    }
-    else if (c == 72  ||  c == 72 + 32)
-    {
-        devuelve = 7;
-    }
-    else if (c == 73  ||  c == 73 + 32)
-    {
-        devuelve = 8;
-    }
-    else if (c == 74  ||  c == 74 + 32)
-    {
-        devuelve = 9;
-    }
-    else if (c == 75  ||  c == 75 + 32)
-    {
-        devuelve = 10;
-    }
-    else if (c == 76  ||  c == 76 + 32)
-    {
-        devuelve = 11;
-    }
-    else if (c == 77  ||  c == 77 + 32)
-    {
-        devuelve = 12;
-    }
-    else if (c == 78  ||  c == 78 + 32)
-    {
-        devuelve = 13;
-    }
-    else if (c == 79  ||  c == 79 + 32)
-    {
-        devuelve = 14;
-    }
-    else if (c == 80  ||  c == 80 + 32)
-    {
-        devuelve = 15;
-    }
-    else
-    {
-        devuelve = 999;
+        if (c == 65 + i  ||  c == 65 + 32 + i)
+        {
+            devuelve = i;
+            break;
+        }
+        else if (i <= 26) //
+        {
+            devuelve = 999;
+        }
+        i++;
     }
     return devuelve;
 }
