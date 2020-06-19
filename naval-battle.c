@@ -265,11 +265,11 @@ para así recorrer todo el abecedario.*/
             devuelve = i;
             break;
         }
-        else if (i <= 26) //
-        {
-            devuelve = 999;
-        }
         i++;
+    }
+    if (i == 26) // Si i recorrio todo el abecedario, sin encontrar coincidencias.
+    {
+        devuelve = 999;
     }
     return devuelve;
 }
