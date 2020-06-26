@@ -134,14 +134,9 @@ void generarBarcosUsuario(int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY,
 
 int comprobarFinalizacionJuego(int aciertos)
 {
-    if (aciertos == CANTIDADBARCOS)
-    {
-        return 1;
-    }
-    else
-    {
-        return 0;
-    }
+    int v;
+    v = (aciertos == CANTIDADBARCOS) ? 1: 0;
+    return v;
 }
 
 void disparos (int mapaEnemigo TAMANOXY, int mapaUsuario TAMANOXY, int disparosMapaEnemigo TAMANOXY,
@@ -208,15 +203,15 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
                     printf("\n\n En que columna quieres atacar? (A - %c): ", equivaleX);
                     ingreso = getche();
                     x = conversionLetraANumero(ingreso);
-                    }
-                    while (x ==  999); //999 es devuelto por conversionLetraANumero, si se le pasa un valor no previsto
+                }
+                while (x ==  999); //999 es devuelto por conversionLetraANumero, si se le pasa un valor no previsto
 
-                    do
-                    {
-                        printf("\n Y en que fila?: ");
-                        scanf("%d", &aux);
-                        y = aux - 1;
-                    }
+                do
+                {
+                    printf("\n Y en que fila?: ");
+                    scanf("%d", &aux);
+                    y = aux - 1;
+                }
                 while (y < 0  ||  y > TAMANOY );
             }
             while (disparosMapaEnemigo[x][y] == 1); // Comprueba que ya no se haya disparado en dicha coordenada.
@@ -250,7 +245,6 @@ mediante la función comprobarFinalizacionJuego, despliega o no un mensaje de fi
 int conversionLetraANumero(char c)
 /*Convierte una letra a su posición numérica equivalente. Si analiza un caracter
 no previsto, devuelve 999.
-
 Las pruebas lógicas planteadas, se basan en el código ASCII. Se  incluye una prueba lógica OR + 32 en
 todas las instancias, ya que el equivalente de la letra en minúscula.
 65 es el identificador correspondiente a la letra "a". i aumenta en 1 cada vez que se realiza el ciclo,
